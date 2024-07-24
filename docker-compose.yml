@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  fal:
+    build:
+      context: .
+      dockerfile: Dockerfile.fal
+    ports:
+      - "8001:8001"
+
+  today:
+    build:
+      context: .
+      dockerfile: Dockerfile.today
+    ports:
+      - "8002:8002"
+
+  generate_qr:
+    build:
+      context: .
+      dockerfile: Dockerfile.qr
+    ports:
+      - "8003:8003"
+
+  combined:
+    build:
+      context: .
+      dockerfile: Dockerfile.combined
+    ports:
+      - "8080:8080"
+    depends_on:
+      - fal
+      - today
+      - generate_qr
