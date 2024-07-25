@@ -3,3 +3,4 @@ hafez
 khayyam
 qrcode
 requests
+pandas
